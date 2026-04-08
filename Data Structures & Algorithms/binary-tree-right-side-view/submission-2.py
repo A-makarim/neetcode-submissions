@@ -1,9 +1,11 @@
 """
+TIME COMPLEXITY: O(n)
+SPACE COMPLEXITY: O(w)  # w = max width of the tree (queue), plus O(h) recursion stack? (not used) -> BFS uses queue only
+
 KEY INSGIHTS
 USE BFS FOR GETTING LEVEL ORDER SUBLISTS
 JUST RETURN THE RIGHT MOST
 """
-
 
 from collections import deque
 
@@ -42,12 +44,11 @@ class Solution:
         bfs(root)
         final = []
         print(ans)
-        # now i need last of every sublist"
+        # now i need last of every sublist""
         # edit: not last. FIRST
         for i in ans:
             final.append(i[-1])
 
         return final
                         
-            
         
