@@ -1,0 +1,42 @@
+"""
+KEY INSIGHTS
+FIND THE MID POINT, THE ROOT
+RECURSIVELY CALL LEFT TREE AND RIGHT TREE
+"""
+
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+
+
+        # the first value of pre order is root.val
+        # that will divide the tree
+
+        # the second value will be root.left.val
+        # now question is, when do you know... that the root.left is null
+        # you know it when you reach first value of inorder array
+
+        # so keep popping from inroder array, from root to left,
+
+        if preorder == [] or inorder == []:
+            return None
+
+
+        mid = inorder.index(preorder[0])
+        root = TreeNode(preorder[0])
+
+        root.left = self.buildTree(preorder[1: mid+1], inorder[0: mid])
+        root.right = self.buildTree(preorder[mid+1:], inorder[mid+1:])
+
+        return root
+
+
+                
