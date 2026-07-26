@@ -1,0 +1,16 @@
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+
+
+        length = len(nums)
+
+        def dfs(i,total):
+            
+            if i == length:
+                return 1 if total == target else 0
+
+            return dfs(i+1, total - nums[i]) + dfs(i+1, total + nums[i])
+        
+        return dfs(0, 0)
+        
+        
